@@ -7,6 +7,8 @@ import "./src/mongoose.js";
 import userRouter from "./src/routes/user.js";
 import roomRouter from "./src/routes/room.js";
 import { createOrUpdateRoom } from "./src/controllers/roomController.js";
+import dotenv from "dotenv"
+import connectDB from "./src/mongoose.js";
 
 const app = express();
 app.use(express.json());
@@ -14,15 +16,31 @@ app.use(cors());
 app.use(userRouter);
 app.use(roomRouter);
 
+dotenv.config();
+connectDB();
+
 const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://chess-game-1cwu.onrender.com",
     methods: ["GET", "POST"],
     credentials: true,
   },
 });
+
+if (process.env.NODE_ENV === "production") {
+  const prodDirname = path.resolve();
+  app.use(express.static(path.join(prodDirname, "/chess-web/build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(prodDirname, "chess-web", "build", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running....");
+  });
+}
 
 var waitingUsers = [];
 

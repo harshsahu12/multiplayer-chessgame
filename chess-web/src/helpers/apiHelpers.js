@@ -1,4 +1,4 @@
 import { io } from "socket.io-client";
 
-export const url = "http://localhost:3001";
+export const url = "https://chess-game-1cwu.onrender.com";
 export const socket = io.connect(url);

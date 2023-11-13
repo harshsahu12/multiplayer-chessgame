@@ -1,28 +1,13 @@
 import mongoose from "mongoose";
-mongoose
-  .connect(
-    "mongodb+srv://Harsh:harsh123@cluster0.oae138b.mongodb.net/chess-game",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
-  .then((res) => {
-    console.log("DB Connected!");
-  })
-  .catch((err) => {
-    console.log("Error while connecting to DB", err.message);
-  });
 
-export const connectDatabase = async () => {
+const connectDB = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://jashwanth:jashwanthbj9@chess.pww3bsh.mongodb.net/?retryWrites=true"
-    );
-
-    console.log("connected to database");
-  } catch (error) {
-    console.log(error);
+    const conn = await mongoose.connect(process.env.MONGO_URI);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (err) {
+    console.error(`Error: ${err}`);
     process.exit(1);
   }
 };
+
+export default connectDB;
