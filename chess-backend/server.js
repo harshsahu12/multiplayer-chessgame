@@ -23,7 +23,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "https://chess-game-1cwu.onrender.com",
+    origin: "https://multiplayer-chessgame.vercel.app",
     methods: ["GET", "POST"],
     credentials: true,
   },
