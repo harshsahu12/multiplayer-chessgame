@@ -1,4 +1,4 @@
-# multiplayer-chessgame
+# Multiplayer-chessgame
 
 ### Welcome to the MERN Stack Multiplayer Chess Game, a real-time chess experience with chat functionality in separate rooms. Dive into the world of chess, challenge friends, and make strategic moves in this engaging and interactive game.
 
