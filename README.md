@@ -24,7 +24,7 @@
 
 ## Clone the repository:
 
-    git clone https://github.com/your-username/mern-chess-game.git
+    git clone https://github.com/harshsahu12/mern-chess-game.git
     
 ## Install dependencies:
 
